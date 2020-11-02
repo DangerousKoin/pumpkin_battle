@@ -1,0 +1,49 @@
+body {
+    background-color: #6F532A;
+}
+header {
+    margin: 10% auto 0;
+}
+h1 {
+    text-align: center;
+}
+.battlePlan {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    margin: 0 auto 10px;
+    width: 500px;
+    height: 300px;
+}
+.playerGarden {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    margin: 0 auto;
+    width: 500px;
+    height: 300px;
+}
+.planText {
+    text-align: center;
+    margin: 15% auto;
+    height: 100%;
+    width: 100%;
+    color: #46341a;
+}
+.gridText {
+    text-align: center;
+    margin: 15% auto;
+    height: 100%;
+    width: 100%;
+    color: #46341a;
+}
+.fence {
+    background-color: #5e4817;
+    background-size: 100%;
+}
+.dirt {
+    background-color: #6F532A;
+    background-color: #836B32;
+    background-image: url('../images/dirt.svg');
+    background-size: 100%;
+}
