@@ -13,7 +13,7 @@ h1 {
     text-align: center;
     background-color: rgba(236, 126, 0, 50%);
 }
-.battlePlan {
+#battlePlan {
     display: grid;
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
@@ -21,7 +21,7 @@ h1 {
     width: 500px;
     height: 300px;
 }
-.playerGarden {
+#playerGarden {
     display: grid;
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
@@ -44,7 +44,7 @@ h1 {
     color: #46341a;
 }
 .fence {
-    background-color: #5e4817;
+    background-color: #a77b39;
     background-size: 100%;
 }
 .dirt {

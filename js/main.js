@@ -8,13 +8,19 @@ document.getElementById('startButton').onclick = function(){
     renderPumpkin();
 };
 /*----- functions -----*/
+function createGrids(){
+    function createGarden(){
+        document.getElementById('playerGarden').appendChild(div);
+    }
+}
+
 function renderPumpkin(){
     console.log('rendering pumpkin...');
     let img = document.createElement('IMG');
-    let node = document.createElement('DIV').style.zIndex = '2';
-    
-    img.src = "images/dirt.svg";
-    
-    node.appendChild.img;
-    document.getElementById('GA1').appendChild(node);
+    let div = document.createElement('DIV');
+    div.style.zIndex = '2';
+    img.src = "images/2x2Pumpkin.png";
+    img.style.position = 'absolute';
+    div.appendChild(img);
+    document.getElementById('GA1').appendChild(div);
 }
