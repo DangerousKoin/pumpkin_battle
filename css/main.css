@@ -2,10 +2,16 @@ body {
     background-color: #6F532A;
 }
 header {
-    margin: 10% auto 0;
+    margin: 10% auto 5px;
+    text-align: center;
 }
 h1 {
     text-align: center;
+    margin: 0 auto;
+}
+#startButton {
+    text-align: center;
+    background-color: rgba(236, 126, 0, 50%);
 }
 .battlePlan {
     display: grid;

@@ -3,13 +3,18 @@
 /*----- app's state (variables) -----*/
 /*----- cached element references -----*/
 /*----- event listeners -----*/
+document.getElementById('startButton').onclick = function(){
+    console.log('i clicked start');
+    renderPumpkin();
+};
 /*----- functions -----*/
 function renderPumpkin(){
+    console.log('rendering pumpkin...');
     let img = document.createElement('IMG');
-    let loc = document.getElementById('GB2');
-    img.setAttribute('src', '/home/koin/code/pumpkin_battle/images/2x2Pumpkin.png');
-    document.body.appendChild(loc);
-
+    let node = document.createElement('DIV').style.zIndex = '2';
+    
+    img.src = "images/dirt.svg";
+    
+    node.appendChild.img;
+    document.getElementById('GA1').appendChild(node);
 }
-
-renderPumpkin();
