@@ -2,14 +2,16 @@
 const letters = 'ABCDEFGHIJ'.split('');
 /*----- app's state (variables) -----*/
 /*----- cached element references -----*/
+const startBtn = document.getElementById('startButton');
 /*----- event listeners -----*/
-document.getElementById('startButton').onclick = function(){
+startBtn.onclick = function(){
     console.log('i clicked start');
     renderGrids();
     renderPumpkins();
     // renderBat('FE4', 'LR', 'FBat1');
     // renderBat('FC8', 'UD', 'FBat2');
-    // damagePumpkin('GG3', 'UD', 'GBat1');
+    damagePumpkin('GA1', 'UD', 'GBat1');
+    startBtn.remove();
 };
 /*----- functions -----*/
 function renderGrids(){
@@ -94,7 +96,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '100px';
         div.style.height = '60px';
-        div.style.margin = '-25px 0 0 0';
+        div.style.margin = '-20px 0 0 0';
         img.src = smPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -108,7 +110,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '150px';
         div.style.height = '90px';
-        div.style.margin = '-25px 0 0 0';
+        div.style.margin = '-20px 0 0 0';
         img.src = mdPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -122,7 +124,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '200px';
         div.style.height = '120px';
-        div.style.margin = '-25px 0 0 0';
+        div.style.margin = '-19px 0 0 0';
         img.src = lgPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -139,11 +141,11 @@ function damagePumpkin(loc, dir, num){
     if (dir === 'UD'){
         div.style.width = '30px';
         div.style.height = '150px';
-        div.style.margin = '-85px 0 0 -50px';
+        div.style.margin = '-58px 0 0 0';
     }else{
         div.style.width = '150px';
         div.style.height = '30px';
-        div.style.margin = '-25px 0 0 0';
+        div.style.margin = '-20px 0 0 0';
     }
     div.style.zIndex = '5';
     img.src = 'images/1x1Dirt.png';
