@@ -1,12 +1,12 @@
 /*----- constants -----*/
-const letters = 'abcdefghij'.split('');
+const letters = 'ABCDEFGHIJ'.split('');
 /*----- app's state (variables) -----*/
 /*----- cached element references -----*/
 /*----- event listeners -----*/
 document.getElementById('startButton').onclick = function(){
     console.log('i clicked start');
     renderGrids();
-    // renderPumpkins();
+    renderPumpkins();
     // renderBat('FE4', 'LR', 'FBat1');
     // renderBat('FC8', 'UD', 'FBat2');
     // damagePumpkin('GG3', 'UD', 'GBat1');
@@ -26,9 +26,8 @@ function renderGrids(){
                 div.style.backgroundImage = "url('./images/1x1Dirt.png')";
                 div.style.backgroundSize = '100%';
                 if (idx === 0){row++;};
-                console.log(row);
-                div.id = 'g' + ltr + row;
-                console.log(div.id);
+                div.id = 'G' + ltr + row;
+                div.textContent = ltr + row;
                 document.getElementById('playerGarden').appendChild(div);
             }
         }
@@ -45,9 +44,8 @@ function renderGrids(){
                 div.style.backgroundImage = "url('./images/1x1Fence.png')";
                 div.style.backgroundSize = '100%';
                 if (idx === 0){row++;};
-                console.log(row);
-                div.id = 'g' + ltr + row;
-                console.log(div.id);
+                div.id = 'F' + ltr + row;
+                div.textContent = ltr + row;
                 document.getElementById('battlePlan').appendChild(div);
             }
         }
