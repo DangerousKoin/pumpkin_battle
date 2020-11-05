@@ -34,7 +34,7 @@ h1 {
     margin: 15% auto;
     height: 100%;
     width: 100%;
-    color: #46341a;
+    color: #f7c89d;
 }
 .gridText {
     text-align: center;
@@ -45,6 +45,7 @@ h1 {
 }
 .fence {
     background-color: #a77b39;
+    background-image: url('../images/1x1Fence.png');
     background-size: 100%;
 }
 .dirt {
