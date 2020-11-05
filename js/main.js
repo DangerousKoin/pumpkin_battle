@@ -14,10 +14,9 @@ document.getElementById('startButton').onclick = function(){
 /*----- functions -----*/
 function renderGrids(){
     renderGarden();
-    // renderFence();
+    renderFence();
     function renderGarden(){
-        let row = 0;
-        // for (row = 1; row <= 10;){
+        for (row = 0; row < 10;){
             letters.forEach(createDiv);
             function createDiv(ltr, idx){
                 let div = document.createElement('DIV');
@@ -32,7 +31,26 @@ function renderGrids(){
                 console.log(div.id);
                 document.getElementById('playerGarden').appendChild(div);
             }
-        // }
+        }
+        
+    }
+    function renderFence(){
+        for (row = 0; row < 10;){
+            letters.forEach(createDiv);
+            function createDiv(ltr, idx){
+                let div = document.createElement('DIV');
+                div.style.width = '100%';
+                div.class = 'dirt';
+                div.style.backgroundColor = '#a77b39';
+                div.style.backgroundImage = "url('./images/1x1Fence.png')";
+                div.style.backgroundSize = '100%';
+                if (idx === 0){row++;};
+                console.log(row);
+                div.id = 'g' + ltr + row;
+                console.log(div.id);
+                document.getElementById('battlePlan').appendChild(div);
+            }
+        }
         
     }
 }
