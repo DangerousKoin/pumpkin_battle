@@ -10,27 +10,37 @@ startBtn.onclick = function(){
     renderPumpkins();
     // renderBat('FE4', 'LR', 'FBat1');
     // renderBat('FC8', 'UD', 'FBat2');
-    damagePumpkin('GA1', 'UD', 'GBat1');
+    renderDamage('GA1', 'UD', 'DMG1');
     startBtn.remove();
 };
 /*----- functions -----*/
 function renderGrids(){
     renderGarden();
-    renderFence();
+    // renderFence();
     function renderGarden(){
         for (row = 0; row < 10;){
             letters.forEach(createDiv);
             function createDiv(ltr, idx){
                 let div = document.createElement('DIV');
-                div.style.width = '100%';
+                div.style.width = '48px';
+                div.style.height = '28px';
                 div.class = 'dirt';
                 div.style.backgroundColor = '#6F532A';
                 div.style.backgroundImage = "url('./images/1x1Dirt.png')";
                 div.style.backgroundSize = '100%';
+                div.style.border = '1px solid rgba(255,255,255,25%';
                 if (idx === 0){row++;};
                 div.id = 'G' + ltr + row;
-                div.textContent = ltr + row;
                 document.getElementById('playerGarden').appendChild(div);
+
+                let divText = document.createElement('DIV');
+                divText.style.width = '50px';
+                divText.style.height = '20px';
+                divText.textContent = ltr + row;
+                divText.style.margin = '5px 0';
+                divText.style.display = 'relative';
+                divText.style.textAlign = 'center';
+                div.appendChild(divText);
             }
         }
         
@@ -40,15 +50,25 @@ function renderGrids(){
             letters.forEach(createDiv);
             function createDiv(ltr, idx){
                 let div = document.createElement('DIV');
-                div.style.width = '100%';
+                let divText = document.createElement('DIV');
+                div.style.width = '48px';
+                div.style.height = '28px';
                 div.class = 'dirt';
                 div.style.backgroundColor = '#a77b39';
                 div.style.backgroundImage = "url('./images/1x1Fence.png')";
                 div.style.backgroundSize = '100%';
+                div.style.border = '1px solid rgba(200,200,200,25%';
                 if (idx === 0){row++;};
                 div.id = 'F' + ltr + row;
-                div.textContent = ltr + row;
                 document.getElementById('battlePlan').appendChild(div);
+
+                divText.style.width = '50px';
+                divText.style.height = '20px';
+                divText.textContent = ltr + row;
+                divText.style.margin = '5px 0';
+                divText.style.display = 'relative';
+                divText.style.textAlign = 'center';
+                div.appendChild(divText);
             }
         }
         
@@ -134,24 +154,29 @@ function renderPumpkins(){
     }
 
 }
-function damagePumpkin(loc, dir, num){
+function renderDamage(loc, dir, num){
     console.log('damaging pumpkin...')
     let img = document.createElement('IMG');
     let div = document.createElement('DIV');
     if (dir === 'UD'){
-        div.style.width = '30px';
-        div.style.height = '150px';
-        div.style.margin = '-58px 0 0 0';
+        div.style.width = '48px';
+        div.style.height = '88px';
+        div.style.margin = '-71px 0 0 -1px';
     }else{
-        div.style.width = '150px';
-        div.style.height = '30px';
+        div.style.width = '148px';
+        div.style.height = '28px';
         div.style.margin = '-20px 0 0 0';
     }
-    div.style.zIndex = '5';
+    div.style.zIndex = '6';
+    div.style.position = 'relative';
+    img.style.border = '1px solid rgba(255,0,0,50%';
+    div.class = 'damage';
+    img.style.zIndex = '5';
     img.src = 'images/1x1Dirt.png';
     img.style.position = 'relative';
+    img.style.width = '48px';
+    img.style.height = '28px';
     img.id = num;
-    img.class = 'damage';
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
 }

@@ -15,17 +15,21 @@ h1 {
 }
 #battlePlan {
     display: grid;
-    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
-    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     margin: 0 auto 10px;
-    width: 500px;
-    height: 300px;
+    /* width: 500px;
+    height: 300px; */
+    text-align: center;
+    color: #f7c89d;
 }
 #playerGarden {
     display: grid;
-    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
-    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% ;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     margin: 0 auto;
     width: 500px;
     height: 300px;
+    text-align: center;
+    color: #a17d4b;
 }
