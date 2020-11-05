@@ -8,15 +8,16 @@ startBtn.onclick = function(){
     console.log('i clicked start');
     renderGrids();
     renderPumpkins();
-    // renderBat('FE4', 'LR', 'FBat1');
-    // renderBat('FC8', 'UD', 'FBat2');
+    renderBat('FE4', 'LR', 'FBat1');
+    renderBat('FC8', 'UD', 'FBat2');
     renderDamage('GA1', 'UD', 'DMG1');
+    renderDamage('GB1', 'LR', 'DMG2');
     startBtn.remove();
 };
 /*----- functions -----*/
 function renderGrids(){
     renderGarden();
-    // renderFence();
+    renderFence();
     function renderGarden(){
         for (row = 0; row < 10;){
             letters.forEach(createDiv);
@@ -82,13 +83,13 @@ function renderBat(loc, dir, num){
         div.style.transform = 'rotate(90deg)';
         div.style.width = '30px';
         div.style.height = '150px';
-        div.style.margin = '-85px 0 0 -45px';
+        div.style.margin = '-91px 0 0 -45px';
         img.style.height = '40px';
         img.style.width = '90px';
     }else{
         div.style.width = '150px';
         div.style.height = '30px';
-        div.style.margin = '-25px 0 0 0';
+        div.style.margin = '-31px 0 0 0';
     }
     div.style.zIndex = '3';
     img.src = 'images/1x3Bat.png';
@@ -116,7 +117,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '100px';
         div.style.height = '60px';
-        div.style.margin = '-20px 0 0 0';
+        div.style.margin = '-31px 0 0 0';
         img.src = smPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -130,7 +131,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '150px';
         div.style.height = '90px';
-        div.style.margin = '-20px 0 0 0';
+        div.style.margin = '-31px 0 0 0';
         img.src = mdPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -144,7 +145,7 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '200px';
         div.style.height = '120px';
-        div.style.margin = '-19px 0 0 0';
+        div.style.margin = '-31px 0 0 0';
         img.src = lgPumpkin;
         img.style.position = 'relative';
         img.id = num;
@@ -161,21 +162,24 @@ function renderDamage(loc, dir, num){
     if (dir === 'UD'){
         div.style.width = '48px';
         div.style.height = '88px';
-        div.style.margin = '-71px 0 0 -1px';
+        div.style.margin = '-60px 0 0 -1px';
+        img.src = 'images/1x3Damage.png';
+        img.style.width = '48px';
+        img.style.height = '88px';
     }else{
         div.style.width = '148px';
         div.style.height = '28px';
-        div.style.margin = '-20px 0 0 0';
+        div.style.margin = '-31px 0 0 -1px';
+        img.src = 'images/3x1Damage.png';
+        img.style.width = '148px';
+        img.style.height = '28px';
     }
     div.style.zIndex = '6';
     div.style.position = 'relative';
-    img.style.border = '1px solid rgba(255,0,0,50%';
     div.class = 'damage';
+    img.style.border = '1px solid rgba(255,0,0,100%';
     img.style.zIndex = '5';
-    img.src = 'images/1x1Dirt.png';
     img.style.position = 'relative';
-    img.style.width = '48px';
-    img.style.height = '28px';
     img.id = num;
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
