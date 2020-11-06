@@ -1,5 +1,6 @@
 body {
     background-color: #6F532A;
+    text-align: center;
 }
 header {
     margin: 10px auto 30px;
@@ -34,8 +35,6 @@ h1 {
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     margin: 0 auto 10px;
-    width: 500px;
-    height: 300px;
     text-align: center;
     color: #f7c89d;
 }
@@ -44,24 +43,16 @@ h1 {
     grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     margin: 0 auto;
-    width: 500px;
-    height: 300px;
     text-align: center;
     color: #a17d4b;
 }
-/* #mydiv {
-    position: absolute;
-    z-index: 9;
-    background-color: #f1f1f1;
-    border: 1px solid #d3d3d3;
+#gardenReady {
+    display: none;
     text-align: center;
-    Cursor: move;
-  }
-  #fbat1 {
-      position: absolute;
-      cursor: move;
-  }
-  #imgfbat1 {
-      cursor: move;
-      position: absolute;
-  } */
+    margin: 0 auto;
+    width: 100px;
+    height: 80px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: rgba(236, 126, 0, 50%);
+}

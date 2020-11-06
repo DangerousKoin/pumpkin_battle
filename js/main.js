@@ -1,23 +1,87 @@
 /*----- constants -----*/
 const letters = 'ABCDEFGHIJ'.split('');
 /*----- app's state (variables) -----*/
+let selectedItem = 'smPum1';
 /*----- cached element references -----*/
 const startBtn = document.getElementById('startButton');
 const introScn = document.getElementById('introScreen');
+const gdnRdyBtn = document.getElementById('gardenReady');
 
 /*----- event listeners -----*/
 startBtn.onclick = function(){
     init();
     introScn.remove();
     startBtn.remove();
+    // renderDamage('GA1', 'UD', 'DMG1');
+    // renderDamage('GB1', 'LR', 'DMG2');
 };
+gdnRdyBtn.onclick = function(){
+    renderBat('FD4', 'LR', 'fbat1');
+}
+window.onclick = function(e) {
+    if (e.target.id === 'imgsmPum1'){
+        selectedItem = 'smPum1';
+    } else if (e.target.id === 'imgsmPum2'){
+        selectedItem = 'smPum2';
+    } else if (e.target.id === 'imgmdPum1'){
+        selectedItem = 'mdPum1';
+    } else if (e.target.id === 'imgmdPum2'){
+        selectedItem = 'mdPum2';
+    } else if (e.target.id === 'imglgPum1'){
+        selectedItem = 'lgPum1';
+    }else if (e.target.id === 'imgfbat1'){
+        selectedItem = 'fbat1';
+    }
+    dragElement(document.getElementById(selectedItem));
+}
+function dragElement(elmnt) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
 /*----- functions -----*/
 function init(){
     renderGrids();
     renderPumpkins();
-    renderBat('FD4', 'LR', 'fbat1');
+    gdnRdyBtn.style.display = 'block';
+    // renderBat('FD4', 'LR', 'fbat1');
 }
 function renderGrids(){
+    let mainDiv1 = document.getElementById('battlePlan');
+    let mainDiv2 = document.getElementById('playerGarden');
+    mainDiv1.style.width = '500px';
+    mainDiv1.style.height = '300px';
+    mainDiv2.style.width = '500px';
+    mainDiv2.style.height = '300px';
     renderGarden();
     renderFence();
     function renderGarden(){
@@ -178,8 +242,6 @@ function renderPumpkins(){
     }
 
 }
-// example: renderDamage('GA1', 'UD', 'DMG1');
-// example: renderDamage('GB1', 'LR', 'DMG2');
 function renderDamage(loc, dir, num){
     console.log('damaging pumpkin...')
     let img = document.createElement('IMG');
@@ -187,7 +249,7 @@ function renderDamage(loc, dir, num){
     if (dir === 'UD'){
         div.style.width = '48px';
         div.style.height = '88px';
-        div.style.margin = '-60px 0 0 -1px';
+        div.style.margin = '-31px 0 0 -1px';
         img.src = 'images/1x3Damage.png';
         img.style.width = '48px';
         img.style.height = '88px';
@@ -208,58 +270,4 @@ function renderDamage(loc, dir, num){
     img.id = num;
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
-}
-let selectedItem = 'none';
-window.onclick = function(e) {
-    if (e.target.id === 'imgsmPum1'){
-        selectedItem = 'smPum1';
-    } else if (e.target.id === 'imgsmPum2'){
-        selectedItem = 'smPum2';
-    } else if (e.target.id === 'imgmdPum1'){
-        selectedItem = 'mdPum1';
-    } else if (e.target.id === 'imgmdPum2'){
-        selectedItem = 'mdPum2';
-    } else if (e.target.id === 'imglgPum1'){
-        selectedItem = 'lgPum1';
-    }else if (e.target.id === 'imgfbat1'){
-        selectedItem = 'fbat1';
-    }
-    dragElement(document.getElementById(selectedItem));
-}
-
-
-
-function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-    }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
 }
