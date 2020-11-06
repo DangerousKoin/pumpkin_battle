@@ -1,11 +1,17 @@
 /*----- constants -----*/
 const letters = 'ABCDEFGHIJ'.split('');
 /*----- app's state (variables) -----*/
-let selectedItem = 'smPum1';
+let selectedItem = 'imgsmPum1';
+selectedItem = 'imgsmPum2';
+selectedItem = 'imgmdPum1';
+selectedItem = 'imgmdPum2';
+selectedItem = 'imgslgPum1';
+let gardenRdy = false;
 /*----- cached element references -----*/
 const startBtn = document.getElementById('startButton');
 const introScn = document.getElementById('introScreen');
 const gdnRdyBtn = document.getElementById('gardenReady');
+
 
 /*----- event listeners -----*/
 startBtn.onclick = function(){
@@ -17,21 +23,35 @@ startBtn.onclick = function(){
 };
 gdnRdyBtn.onclick = function(){
     renderBat('FD4', 'LR', 'fbat1');
+    gardenRdy = true;
+    document.getElementById('imgsmPum1').style.border = '1px solid rgba(0,0,0,100%)';
+    document.getElementById('imgsmPum2').style.border = '1px solid rgba(0,0,0,100%)';
+    document.getElementById('imgmdPum1').style.border = '1px solid rgba(0,0,0,100%)';
+    document.getElementById('imgmdPum2').style.border = '1px solid rgba(0,0,0,100%)';
+    document.getElementById('imglgPum1').style.border = '1px solid rgba(0,0,0,100%)';
+    gdnRdyBtn.remove();
 }
 window.onclick = function(e) {
-    if (e.target.id === 'imgsmPum1'){
-        selectedItem = 'smPum1';
-    } else if (e.target.id === 'imgsmPum2'){
-        selectedItem = 'smPum2';
-    } else if (e.target.id === 'imgmdPum1'){
-        selectedItem = 'mdPum1';
-    } else if (e.target.id === 'imgmdPum2'){
-        selectedItem = 'mdPum2';
-    } else if (e.target.id === 'imglgPum1'){
-        selectedItem = 'lgPum1';
-    }else if (e.target.id === 'imgfbat1'){
-        selectedItem = 'fbat1';
+    if (gardenRdy === true){
+        if (e.target.id === 'imgfbat1'){
+            selectedItem = 'fbat1';
+        }
+    } else {
+        if (e.target.id === 'imgsmPum1'){
+            selectedItem = 'smPum1';
+        } else if (e.target.id === 'imgsmPum2'){
+            selectedItem = 'smPum2';
+        } else if (e.target.id === 'imgmdPum1'){
+            selectedItem = 'mdPum1';
+        } else if (e.target.id === 'imgmdPum2'){
+            selectedItem = 'mdPum2';
+        } else if (e.target.id === 'imglgPum1'){
+            selectedItem = 'lgPum1';
+        }else if (e.target.id === 'imgfbat1'){
+            selectedItem = 'fbat1';
+        }
     }
+
     dragElement(document.getElementById(selectedItem));
 }
 function dragElement(elmnt) {
@@ -60,6 +80,14 @@ function dragElement(elmnt) {
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+    let saveElmnt = elmnt.id.toString();
+    let elmntArr = saveElmnt.split('');
+    // elmnt.remove();
+    calcNewLoc();
+    function calcNewLoc(){
+        console.log(elmntArr);
+    }
   }
 
   function closeDragElement() {
@@ -71,9 +99,12 @@ function dragElement(elmnt) {
 /*----- functions -----*/
 function init(){
     renderGrids();
-    renderPumpkins();
+    renderPumpkins('small', 'GA1', 'smPum1');
+    renderPumpkins('small', 'GC1', 'smPum2');
+    renderPumpkins('medium', 'GA8', 'mdPum1');
+    renderPumpkins('medium', 'GD8', 'mdPum2');
+    renderPumpkins('large', 'GG1', 'lgPum1');
     gdnRdyBtn.style.display = 'block';
-    // renderBat('FD4', 'LR', 'fbat1');
 }
 function renderGrids(){
     let mainDiv1 = document.getElementById('battlePlan');
@@ -171,19 +202,17 @@ function renderBat(loc, dir, num){
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
 }
-function renderPumpkins(){
-    console.log('rendering pumpkins...');
-    let smPumpkin = 'images/2x2Pumpkin.png';
-    let mdPumpkin = 'images/3x3Pumpkin.png';
-    let lgPumpkin = 'images/4x4Pumpkin.png';
-
-    smallPumpkin('GA1', 'smPum1');
-    smallPumpkin('GC1', 'smPum2');
-    mediumPumpkin('GA8', 'mdPum1');
-    mediumPumpkin('GD8', 'mdPum2');
-    largePumpkin('GG1', 'lgPum1');
-
-    function smallPumpkin(loc, num){
+function renderPumpkins(size, loc, num){
+    if (size === 'small'){
+        smallPumpkin();
+    }
+    if (size === 'medium'){
+        mediumPumpkin();
+    }
+    if (size === 'large'){
+        largePumpkin();
+    }
+    function smallPumpkin(){
         let img = document.createElement('IMG');
         let div = document.createElement('DIV');
         div.style.zIndex = '2';
@@ -193,7 +222,7 @@ function renderPumpkins(){
         div.style.position = 'absolute';
         // div.style.marginTop = "-30px";
         div.id = num;
-        img.src = smPumpkin;
+        img.src = 'images/2x2Pumpkin.png';
         img.style.position = 'relative';
         img.style.cursor = 'move';
         img.style.border = '1px solid rgba(0,255,0,100%)';
@@ -202,7 +231,7 @@ function renderPumpkins(){
         div.appendChild(img);
         document.getElementById(loc).appendChild(div);
     }
-    function mediumPumpkin(loc, num){
+    function mediumPumpkin(){
         let img = document.createElement('IMG');
         let div = document.createElement('DIV');
         div.style.zIndex = '2';
@@ -212,7 +241,7 @@ function renderPumpkins(){
         div.style.position = 'absolute';
         // div.style.marginTop = "-30px";
         div.id = num;
-        img.src = mdPumpkin;
+        img.src = 'images/3x3Pumpkin.png';
         img.style.position = 'relative';
         img.style.cursor = 'move';
         img.style.border = '1px solid rgba(0,255,0,100%)';
@@ -221,7 +250,7 @@ function renderPumpkins(){
         div.appendChild(img);
         document.getElementById(loc).appendChild(div);
     }
-    function largePumpkin(loc, num){
+    function largePumpkin(){
         let img = document.createElement('IMG');
         let div = document.createElement('DIV');
         div.style.zIndex = '2';
@@ -231,7 +260,7 @@ function renderPumpkins(){
         div.style.position = 'absolute';
         // div.style.marginTop = "-30px";
         div.id = num;
-        img.src = lgPumpkin;
+        img.src = 'images/4x4Pumpkin.png';
         img.style.position = 'relative';
         img.style.cursor = 'move';
         img.style.border = '1px solid rgba(0,255,0,100%)';
