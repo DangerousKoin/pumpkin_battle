@@ -1,7 +1,7 @@
 # pumpkin_battle
 ## Screen shots
-![Alt text](pumpkin_battle/images/PumpkinBattle_1.png?raw=true "Title")
-![Alt text](pumpkin_battle/images/PumpkinBattle_2.png?raw=true "Title")
+![Alt text](images/PumpkinBattle_1.png?raw=true "Title")
+![Alt text](images/PumpkinBattle_2.png?raw=true "Title")
 ![Alt text](images/PumpkinBattle_3.png?raw=true "Title")
 
 
