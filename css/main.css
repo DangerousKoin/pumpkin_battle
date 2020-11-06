@@ -2,15 +2,31 @@ body {
     background-color: #6F532A;
 }
 header {
-    margin: 10% auto 5px;
+    margin: 10px auto 30px;
     text-align: center;
+    width: 500px;
+    position: relative;
 }
 h1 {
     text-align: center;
     margin: 0 auto;
+    width: 500px;
+}
+#introScreen {
+    text-align: center;
+    margin: 0 auto;
+    width: 500px;
+    height: 600px;
+    position: relative;
+    background-color: black;
 }
 #startButton {
     text-align: center;
+    margin: 25% auto;
+    width: 200px;
+    height: 120px;
+    border-radius: 60px;
+    font-size: 30px;
     background-color: rgba(236, 126, 0, 50%);
 }
 #battlePlan {
@@ -33,3 +49,19 @@ h1 {
     text-align: center;
     color: #a17d4b;
 }
+/* #mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    Cursor: move;
+  }
+  #fbat1 {
+      position: absolute;
+      cursor: move;
+  }
+  #imgfbat1 {
+      cursor: move;
+      position: absolute;
+  } */

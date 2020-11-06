@@ -3,18 +3,20 @@ const letters = 'ABCDEFGHIJ'.split('');
 /*----- app's state (variables) -----*/
 /*----- cached element references -----*/
 const startBtn = document.getElementById('startButton');
+const introScn = document.getElementById('introScreen');
+
 /*----- event listeners -----*/
 startBtn.onclick = function(){
-    console.log('i clicked start');
-    renderGrids();
-    renderPumpkins();
-    renderBat('FE4', 'LR', 'FBat1');
-    renderBat('FC8', 'UD', 'FBat2');
-    renderDamage('GA1', 'UD', 'DMG1');
-    renderDamage('GB1', 'LR', 'DMG2');
+    init();
+    introScn.remove();
     startBtn.remove();
 };
 /*----- functions -----*/
+function init(){
+    renderGrids();
+    renderPumpkins();
+    renderBat('FD4', 'LR', 'fbat1');
+}
 function renderGrids(){
     renderGarden();
     renderFence();
@@ -83,18 +85,24 @@ function renderBat(loc, dir, num){
         div.style.transform = 'rotate(90deg)';
         div.style.width = '30px';
         div.style.height = '150px';
-        div.style.margin = '-91px 0 0 -45px';
+        // div.style.margin = '-91px 0 0 -45px';
         img.style.height = '40px';
         img.style.width = '90px';
     }else{
         div.style.width = '150px';
         div.style.height = '30px';
-        div.style.margin = '-31px 0 0 0';
+        // div.style.margin = '-31px 0 0 0';
     }
-    div.style.zIndex = '3';
-    img.src = 'images/1x3Bat.png';
+    div.style.zIndex = '4';
+    div.style.position = 'absolute';
+    div.style.cursor = 'move';
+    div.id = num;
+    img.style.zIndex = '3';
     img.style.position = 'relative';
-    img.id = num;
+    img.style.cursor = 'move';
+    img.style.border = '1px solid rgba(255,0,255,100%)';
+    img.src = 'images/1x3Bat.png';
+    img.id = 'img' + num;
     img.class = 'bat';
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
@@ -105,11 +113,11 @@ function renderPumpkins(){
     let mdPumpkin = 'images/3x3Pumpkin.png';
     let lgPumpkin = 'images/4x4Pumpkin.png';
 
-    smallPumpkin('GA1', 'SPum1');
-    smallPumpkin('GC1', 'SPum2');
-    mediumPumpkin('GA8', 'MPum1');
-    mediumPumpkin('GD8', 'MPum2');
-    largePumpkin('GG1', 'LPum1');
+    smallPumpkin('GA1', 'smPum1');
+    smallPumpkin('GC1', 'smPum2');
+    mediumPumpkin('GA8', 'mdPum1');
+    mediumPumpkin('GD8', 'mdPum2');
+    largePumpkin('GG1', 'lgPum1');
 
     function smallPumpkin(loc, num){
         let img = document.createElement('IMG');
@@ -117,10 +125,15 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '100px';
         div.style.height = '60px';
-        div.style.margin = '-31px 0 0 0';
+        // div.style.margin = '-31px 0 0 0';
+        div.style.position = 'absolute';
+        // div.style.marginTop = "-30px";
+        div.id = num;
         img.src = smPumpkin;
         img.style.position = 'relative';
-        img.id = num;
+        img.style.cursor = 'move';
+        img.style.border = '1px solid rgba(0,255,0,100%)';
+        img.id = 'img' + num;
         img.class = 'pumpkin';
         div.appendChild(img);
         document.getElementById(loc).appendChild(div);
@@ -131,10 +144,15 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '150px';
         div.style.height = '90px';
-        div.style.margin = '-31px 0 0 0';
+        // div.style.margin = '-31px 0 0 0';
+        div.style.position = 'absolute';
+        // div.style.marginTop = "-30px";
+        div.id = num;
         img.src = mdPumpkin;
         img.style.position = 'relative';
-        img.id = num;
+        img.style.cursor = 'move';
+        img.style.border = '1px solid rgba(0,255,0,100%)';
+        img.id = 'img' + num;
         img.class = 'pumpkin';
         div.appendChild(img);
         document.getElementById(loc).appendChild(div);
@@ -145,16 +163,23 @@ function renderPumpkins(){
         div.style.zIndex = '2';
         div.style.width = '200px';
         div.style.height = '120px';
-        div.style.margin = '-31px 0 0 0';
+        // div.style.margin = '-31px 0 0 0';
+        div.style.position = 'absolute';
+        // div.style.marginTop = "-30px";
+        div.id = num;
         img.src = lgPumpkin;
         img.style.position = 'relative';
-        img.id = num;
+        img.style.cursor = 'move';
+        img.style.border = '1px solid rgba(0,255,0,100%)';
+        img.id = 'img' + num;
         img.class = 'pumpkin';
         div.appendChild(img);
         document.getElementById(loc).appendChild(div);
     }
 
 }
+// example: renderDamage('GA1', 'UD', 'DMG1');
+// example: renderDamage('GB1', 'LR', 'DMG2');
 function renderDamage(loc, dir, num){
     console.log('damaging pumpkin...')
     let img = document.createElement('IMG');
@@ -183,4 +208,58 @@ function renderDamage(loc, dir, num){
     img.id = num;
     div.appendChild(img);
     document.getElementById(loc).appendChild(div);
+}
+let selectedItem = 'none';
+window.onclick = function(e) {
+    if (e.target.id === 'imgsmPum1'){
+        selectedItem = 'smPum1';
+    } else if (e.target.id === 'imgsmPum2'){
+        selectedItem = 'smPum2';
+    } else if (e.target.id === 'imgmdPum1'){
+        selectedItem = 'mdPum1';
+    } else if (e.target.id === 'imgmdPum2'){
+        selectedItem = 'mdPum2';
+    } else if (e.target.id === 'imglgPum1'){
+        selectedItem = 'lgPum1';
+    }else if (e.target.id === 'imgfbat1'){
+        selectedItem = 'fbat1';
+    }
+    dragElement(document.getElementById(selectedItem));
+}
+
+
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }
