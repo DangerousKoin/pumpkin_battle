@@ -1,4 +1,4 @@
-# pumpkin_battle
+# Pumpkin Battle!
 ## Screen shots
 ![Alt text](images/PumpkinBattle_1.png?raw=true "Title")
 ![Alt text](images/PumpkinBattle_2.png?raw=true "Title")
